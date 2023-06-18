@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,7 +29,9 @@ import java.util.List;
 import java.util.Map;
 
 public class RegistrationActivity extends AppCompatActivity {
-
+    String[] item={"O+","A+","A-","B+","B-","AB+","AB-","O-"};
+    AutoCompleteTextView autoCompleteTextView;
+    ArrayAdapter<String> adapterItems;
     private EditText nameEt, cityEt, bloodGroupEt, passwordEt, mobileEt;
     private Button userButton, donorButton;
 
@@ -34,9 +39,18 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        autoCompleteTextView=findViewById(R.id.auto_complete_txt);
+        adapterItems=new ArrayAdapter<String>(this,R.layout.list_item,item);
+        autoCompleteTextView.setAdapter(adapterItems);
+        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String item=adapterView.getItemAtPosition(i).toString();
+                Toast.makeText(RegistrationActivity.this, "Item:"+item, Toast.LENGTH_SHORT).show();
+            }
+        });
         nameEt = findViewById(R.id.name);
         cityEt = findViewById(R.id.city);
-        bloodGroupEt = findViewById(R.id.blood_group);
         passwordEt = findViewById(R.id.password);
         mobileEt = findViewById(R.id.number);
         userButton = findViewById(R.id.register_user_button);
@@ -48,7 +62,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 String name, city, bloodGroup, password, mobile;
                 name = nameEt.getText().toString().trim();
                 city = cityEt.getText().toString().trim();
-                bloodGroup = bloodGroupEt.getText().toString().trim();
+                bloodGroup= autoCompleteTextView.getText().toString().trim();
                 password = passwordEt.getText().toString().trim();
                 mobile = mobileEt.getText().toString().trim();
                 if (isValid(name, city, bloodGroup, password, mobile)) {
@@ -63,7 +77,8 @@ public class RegistrationActivity extends AppCompatActivity {
                 String name, city, bloodGroup, password, mobile;
                 name = nameEt.getText().toString().trim();
                 city = cityEt.getText().toString().trim();
-                bloodGroup = bloodGroupEt.getText().toString().trim();
+                bloodGroup= autoCompleteTextView.getText().toString().trim();
+
                 password = passwordEt.getText().toString().trim();
                 mobile = mobileEt.getText().toString().trim();
                 if (isValid(name, city, bloodGroup, password, mobile)) {
@@ -72,6 +87,7 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private void registerUser(final String name, final String city, final String bloodGroup,
                               final String password, final String mobile) {
