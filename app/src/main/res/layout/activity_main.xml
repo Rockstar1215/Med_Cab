@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
     tools:context=".Activities.MainActivity">
-
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -31,24 +31,23 @@
             app:drawableEndCompat="@drawable/ic_location_on_black_24dp"
             app:drawableTint="@android:color/black" />
 
-
     </LinearLayout>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"/>
+    <TextView
+        android:id="@+id/make_request_button"
+        android:text="@string/make_request"
+        android:textSize="16sp"
+        android:textStyle="bold"
         android:background="@color/colorPrimary"
-        app:title="@string/app_name"
-        app:titleTextColor="@android:color/white" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_below="@id/linearLayout"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
+        android:textColor="@android:color/white"
+        android:padding="16dp"
+        android:layout_alignParentBottom="true"
+        android:textAlignment="center"/>
 
 
 

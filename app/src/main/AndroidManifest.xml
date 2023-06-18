@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
 
     <application
         android:allowBackup="true"
@@ -12,9 +20,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MedCab"
         tools:targetApi="31">
-        <activity android:name=".Activities.MainActivity"/>
-        <activity android:name=".Activities.RegistrationActivity"/>
-        <activity android:name=".Activities.LoginActivity"/>
+    <activity android:name=".Activities.SearchResults" />
+    <activity android:name=".Activities.MakeRequestActivity" />
+    <activity android:name=".Activities.SearchActivity" />
+    <activity android:name=".Activities.LoginActivity" />
+    <activity android:name=".Activities.RegistrationActivity" />
         <activity
             android:name=".Activities.SplashScreen"
             android:exported="true">
@@ -24,6 +34,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
+
+
+</application>
 
 </manifest>
